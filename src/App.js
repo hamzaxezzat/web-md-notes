@@ -34,7 +34,7 @@ export default function App() {
         setNotes((prevNotes) => [newNote, ...prevNotes]);
         setCurrentNoteId(newNote.id);
     }
-
+    console.log(123);
     function updateNote(text) {
         setNotes((oldNotes) => {
             const newArray = [];
