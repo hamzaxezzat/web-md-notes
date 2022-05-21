@@ -1,0 +1,2 @@
+Key Value
+notesLocalStorage [{"id":"ewGcfc7vqERc9KofrXDnH","body":"# Type your markdown note's title herefdsfdsfds"},{"id":"qcDrAd7WWT08lILzS8M_n","body":"# Type your markdown note's title here"},{"id":"VxN28xQa4hypLhmtIFeNe","body":"# Type your markdown note's title herefdsfsdfdsf"},{"id":"mTU9f0W7yuW9JCvYBQSIL","body":"# Type your markdown note's title heredfsdsfdsfdsfd"},{"id":"d6pwNJjVtH9itSrQnFMGj","body":"# Type your markdown note's title herefdsfs\nfds"}]
