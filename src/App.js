@@ -1,31 +1,24 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
-import "./style.css";
 import { data } from "./data";
 import Split from "react-split";
 import { nanoid } from "nanoid";
 
+/**
+ * Challenge: Spend 10-20+ minutes reading through the code
+ * and trying to understand how it's currently working. Spend
+ * as much time as you need to feel confident that you
+ * understand the existing code (although you don't need
+ * to fully understand everything to move on)
+ */
+
 export default function App() {
-    /**
-     * Challenge:
-     * 1. Every time the `notes` array changes, save it
-     *    in localStorage. You'll need to use JSON.stringify()
-     *    to turn the array into a string to save in localStorage.
-     * 2. When the app first loads, initialize the notes state
-     *    with the notes saved in localStorage. You'll need to
-     *    use JSON.parse() to turn the stringified array back
-     *    into a real JS array.
-     */
-
-    const [notes, setNotes] = React.useState(
-        () => JSON.parse(localStorage.getItem("notes")) || []
-    );
-
+    const [notes, setNotes] = React.useState([]);
     const [currentNoteId, setCurrentNoteId] = React.useState(
         (notes[0] && notes[0].id) || ""
     );
-    // console.log(notes);
+
     function createNewNote() {
         const newNote = {
             id: nanoid(),
@@ -34,22 +27,15 @@ export default function App() {
         setNotes((prevNotes) => [newNote, ...prevNotes]);
         setCurrentNoteId(newNote.id);
     }
-    console.log(123);
-    function updateNote(text) {
-        setNotes((oldNotes) => {
-            const newArray = [];
-            for (let i = 0; i < oldNotes.length; i++) {
-                const oldNote = oldNotes[i];
-                if (oldNote.id === currentNoteId) {
-                    newArray.unshift({ ...oldNote, body: text });
-                } else {
-                    newArray.push(oldNote);
-                }
-            }
-            return newArray;
-        });
 
-        localStorage.setItem("notes", JSON.stringify(notes));
+    function updateNote(text) {
+        setNotes((oldNotes) =>
+            oldNotes.map((oldNote) => {
+                return oldNote.id === currentNoteId
+                    ? { ...oldNote, body: text }
+                    : oldNote;
+            })
+        );
     }
 
     function findCurrentNote() {
@@ -92,18 +78,3 @@ export default function App() {
         </main>
     );
 }
-
-// If we Need to put every not into key value in localStorage
-/*
-    function updateLocalStorage() {
-        notes.filter((el) => {
-            if (el["id"] === currentNoteId) {
-                currentNoteBody = el.body;
-            }
-        });
-        localStorage.setItem(
-            JSON.stringify(currentNoteId),
-            JSON.stringify(currentNoteBody)
-        );
-    }
-*/
